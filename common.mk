@@ -15,7 +15,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
+    FILESYSTEM_TYPE_system=erofs \
     POSTINSTALL_OPTIONAL_system=true
 
 AB_OTA_PARTITIONS += \
@@ -162,10 +162,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     android.hardware.secure_element-service.thales
-
-# The LPA where GMS is absent; lower intent-filter priority than Google's.
-PRODUCT_PACKAGES += \
-    OpenEUICC
 
 # eSIM
 PRODUCT_COPY_FILES += \
