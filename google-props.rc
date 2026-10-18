@@ -1,8 +1,9 @@
 # Props stock sets in its product build.prop for Google's apps: Quick Start, Gboard,
 # Turbo, the Pixel launcher, GMS tracing and crash reports. They are set only when
-# a GApps package marks itself with ro.opa.eligible_device=true, which this build never
-# sets; MindTheGapps sets it on init and BiTGApps in build.prop. The AppSearch pair also
-# needs the virtualization framework, which this build leaves out, so it does nothing yet.
+# something marks the build with ro.opa.eligible_device=true: Alch3myOS's
+# vendor/alch3my does, as do MindTheGapps on init and BiTGApps in build.prop. The
+# AppSearch pair also needs the virtualization framework, which this build leaves out,
+# so it does nothing yet.
 # The setup wizard family is absent on purpose: stock's props (restore-anytime above all)
 # send Play services down flows that need stock's newer SetupWizard, and MindTheGapps'
 # older one throws on them, which crashed every new user's setup. Official LineageOS
@@ -27,4 +28,4 @@ on late-init && property:ro.opa.eligible_device=true
     setprop ro.appsearch.feature.override_isolated_storage_migration_freeze true
     setprop ro.launcher.blur.appLaunch 0
     setprop ro.quick_start.oem_id 00e0
-    setprop ro.quick_start.device_id yogi
+    setprop ro.quick_start.device_id ${ro.product.vendor.device}

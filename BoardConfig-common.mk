@@ -40,18 +40,24 @@ BOARD_SUPER_PARTITION_METADATA_DEVICE := super
 
 BOARD_USES_RECOVERY_AS_BOOT :=
 
-# system, system_ext and product are ext4 so GApps can install into them;
-# vendor and the dlkm partitions ship EROFS as on stock.
+# Every partition is EROFS as on stock. Alch3myOS builds GMS in, so nothing
+# installs into system, system_ext or product afterwards; stock's fstab mounts
+# EROFS first and keeps the ext4 entries as a fallback.
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 
-# Free space for GApps in the ext4 images.
-include vendor/lineage/config/BoardConfigReservedSize.mk
+include vendor/alch3my/config/BoardConfigReservedSize.mk
+
+# Alch3myOS vendor/gms installs apps into /system, which generic_system.mk's
+# artifact-path check rejects for device builds, and copies a few sysconfig
+# files the stock blob list carries too (same as caimito).
+BUILD_BROKEN_DUP_RULES := true
+DISABLE_ARTIFACT_PATH_REQUIREMENTS := true
 
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_PRODUCT := product
