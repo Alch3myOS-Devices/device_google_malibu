@@ -249,6 +249,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images_vendor
 
+# The Pixel atrace categories, so atrace and perfetto can record the vendor's trace events.
+# The blob list skips stock's copy and its rc, which this module generates.
+PRODUCT_PACKAGES += \
+    atrace_categories.txt.pixel
+
 # Built from source; blob copies collide with the tree's modules.
 PRODUCT_PACKAGES += \
     android.hidl.allocator@1.0-service \
