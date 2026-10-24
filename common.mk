@@ -244,6 +244,11 @@ PRODUCT_PACKAGES += \
     vndservicemanager \
     rebalance_interrupts-vendor
 
+# The off-mode charger's battery images, which the stock health service reads from
+# /vendor/etc/res/images/charger. The blob list skips stock's copies.
+PRODUCT_PACKAGES += \
+    charger_res_images_vendor
+
 # Built from source; blob copies collide with the tree's modules.
 PRODUCT_PACKAGES += \
     android.hidl.allocator@1.0-service \
