@@ -119,6 +119,12 @@ PRODUCT_PACKAGES += \
     ImsStack \
     Iwlan
 
+# The Bluetooth audio provider (A2DP, LE Audio, HFP and hearing aids). The stock audio HAL
+# loads it and registers IBluetoothAudioProviderFactory; the blob list skips stock's copy and
+# its VINTF fragment, which come with this module, along with the LE Audio and HFP configs.
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth.audio-impl
+
 # wpa_supplicant.conf is the template the supplicant copies to /data; without it
 # addStaInterface fails and wifi never turns on.
 PRODUCT_PACKAGES += \
