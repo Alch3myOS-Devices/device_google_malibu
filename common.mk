@@ -160,6 +160,12 @@ PRODUCT_COPY_FILES += \
     $(MALIBU_PATH)/permissions/privapp-permissions-google-scone.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-google-scone.xml \
     $(MALIBU_PATH)/permissions/hidden-api-whitelist-com.google.android.apps.scone.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/hidden-api-whitelist-com.google.android.apps.scone.xml
 
+# Keep Google Play services from preparing Google's OTAs. The ROM reports a stock
+# fingerprint, so GMS arms resume-on-reboot for an OTA it can never install, which makes
+# the first unlock after each reboot ask for the PIN twice. Updates come from the ROM updater.
+PRODUCT_COPY_FILES += \
+    $(MALIBU_PATH)/permissions/disable-google-ota.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/disable-google-ota.xml
+
 PRODUCT_PACKAGES += \
     android.hardware.secure_element-service.thales
 
