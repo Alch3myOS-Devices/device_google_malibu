@@ -166,6 +166,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(MALIBU_PATH)/permissions/disable-google-ota.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/disable-google-ota.xml
 
+# Pixel WiFi and IMS media framework resource overlays (config_wifi* capabilities and
+# IMS media tuning), ported from the stock grizzly overlays. Shared by the family.
+PRODUCT_PACKAGES += \
+    PixelWifiOverlay2026 \
+    PixelImsMediaServiceOverlay
+
 PRODUCT_PACKAGES += \
     android.hardware.secure_element-service.thales
 
