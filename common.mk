@@ -270,3 +270,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(MALIBU_PATH)/google-props.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/google-props.rc
 PRODUCT_COPY_FILES += device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+
+# Properties
+TARGET_PRODUCT_PROP += device/google/malibu/product.prop
