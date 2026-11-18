@@ -273,3 +273,10 @@ PRODUCT_COPY_FILES += device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRO
 
 # Properties
 TARGET_PRODUCT_PROP += device/google/malibu/product.prop
+
+# Android System Intelligence
+PRODUCT_COPY_FILES += \
+    device/google/malibu/permissions/allowlist_com.google.android.as.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/allowlist_com.google.android.as.xml
+
+PRODUCT_PACKAGES += \
+    AmbientCueOverlay
